@@ -4,7 +4,8 @@ Expected Documentation: Include the Python command and a comment with the expect
 
 from bookshelf.models import Book
 book = Book.objects.create(
-    title = “1984”,
+    title = "1984",
     author = “George Orwell”,
     publication_year = 1949
 )
+
