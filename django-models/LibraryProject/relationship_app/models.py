@@ -34,7 +34,11 @@ from django.db import models
 # Retrieve the librarian for a library.
 
 class Author(models.Model):
+
     name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
