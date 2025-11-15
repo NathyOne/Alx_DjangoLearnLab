@@ -1,6 +1,6 @@
 from .models import Book, Author, Librarian, Library
 #   LibraryProject/relationship_app/query_samples.py doesn't contain: ["Library.objects.get(name=library_name)", "books.all()"]
 
-book_by_specific_author = Book.objects.filter(name = Book.author("james clear"))
+book_by_specific_author = "Author.objects.get(name=author_name)", "objects.filter(author=author)
 allBooks = Book.objects.all()
 librarian_for_library = Librarian.objects.get(library__name = "Abrehot")
