@@ -42,13 +42,13 @@ class Author(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
-    author = models.ForeignKey('Author', on_delete='CASCADE' )
+    author = models.ForeignKey('Author', on_delete=models.CASCADE )
 class Library(models.Model):
     name = models.CharField(max_length=200)
     books = models.ManyToManyField('Book')
 class Librarian(models.Model):
     name = models.CharField(max_length=200)
-    Library = models.OneToOneField('Library', on_delete='SET NULL')
+    Library = models.OneToOneField('Library', on_delete= models.SET_NULL, null=True)
 
 
 
