@@ -48,7 +48,7 @@ class Library(models.Model):
     books = models.ManyToManyField('Book')
 class Librarian(models.Model):
     name = models.CharField(max_length=200)
-    Library = models.OneToOneField('Library', on_delete= models.SET_NULL, null=True)
+    library = models.OneToOneField('Library', on_delete= models.SET_NULL, null=True)
 
 
 
