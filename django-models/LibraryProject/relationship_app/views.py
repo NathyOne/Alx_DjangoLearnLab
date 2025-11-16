@@ -10,7 +10,7 @@ def lists_all_books(request):
     context  = {
                 "book_list" : book_list
     }
-    return render(request, "list_books.html", context=context)
+    return render(request, "relationship_app/list_books.html", context=context)
 
 
 #Create a class-based view in relationship_app/views.py that displays details for a specific library, listing all books available in that library.
@@ -18,3 +18,6 @@ def lists_all_books(request):
 class DetailViewOfLibrary(generic.DetailView):
     all_books_in_the_Library = Library.objects.get(name="main library").books.all()
     all_books_in_library = Book.objects.filter(library__name="Main Library")
+
+
+    
