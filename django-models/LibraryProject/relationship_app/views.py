@@ -111,7 +111,7 @@ def admin_view(request):
 
 
 @user_passes_test(
-    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Librarians',
+    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Librarian',
     login_url='/login/'
 )
 def librarian_view(request):
