@@ -12,10 +12,13 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import permission_required
+
 
 
 
 # Create your views here.
+@permission_required
 def lists_books(request):
     book_list = Book.objects.all()
 
@@ -135,10 +138,6 @@ def member_view(request):
     }
     return render(request, 'member_view.html', context)
 
-
-
-class member_view(View):
-    pass
 
 
 
