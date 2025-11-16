@@ -10,6 +10,8 @@ from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 
 
