@@ -124,7 +124,7 @@ def librarian_view(request):
 
 
 @user_passes_test(
-    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Members',
+    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Member',
     login_url='/login/'
 )
 def member_view(request):
