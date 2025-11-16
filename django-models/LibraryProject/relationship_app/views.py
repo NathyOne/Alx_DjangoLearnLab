@@ -91,12 +91,51 @@ class LogoutView(View):
         messages.success(request, 'You have been successfully logged out.')
         return redirect('login')
     
+from django.shortcuts import render
+from django.contrib.auth.decorators import user_passes_test
 
-class admin_view(View):
-    pass
 
-class librarian_view(View):
-    pass
+
+@user_passes_test(
+    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Admin',
+    login_url='/login/'
+) 
+def admin_view(request):
+    context = {
+        'title': 'Admin Dashboard',
+        'user': request.user,
+        'role': request.user.userprofile.role,
+    }
+    return render(request, 'admin_view.html', context)
+
+
+
+@user_passes_test(
+    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Librarian',
+    login_url='/login/'
+)
+def librarian_view(request):
+    context ={
+        'title': 'Librarian Dashboard', 
+        'user': request.user,
+        'role': request.user.userprofile.role,
+    }
+    return render(request, 'librarian_view.html', context)
+
+
+@user_passes_test(
+    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Member',
+    login_url='/login/'
+)
+def librarian_view(request):
+    context ={
+        'title': 'Member Dashboard', 
+        'user': request.user,
+        'role': request.user.userprofile.role,
+    }
+    return render(request, 'member_view.html', context)
+
+
 
 class member_view(View):
     pass
