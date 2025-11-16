@@ -111,7 +111,7 @@ def admin_view(request):
 
 
 @user_passes_test(
-    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Librarian',
+    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Librarians',
     login_url='/login/'
 )
 def librarian_view(request):
@@ -124,10 +124,10 @@ def librarian_view(request):
 
 
 @user_passes_test(
-    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Member',
+    lambda user: user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == 'Members',
     login_url='/login/'
 )
-def librarian_view(request):
+def member_view(request):
     context ={
         'title': 'Member Dashboard', 
         'user': request.user,
