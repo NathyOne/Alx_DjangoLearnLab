@@ -90,6 +90,19 @@ class LogoutView(View):
         logout(request)
         messages.success(request, 'You have been successfully logged out.')
         return redirect('login')
+    
+
+class admin_view(View):
+    pass
+
+class librarian_view(View):
+    pass
+
+class member_view(View):
+    pass
+
+
+
 
     
 
