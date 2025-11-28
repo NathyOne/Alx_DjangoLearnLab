@@ -1,39 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from bookshelf.models import CustomUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib.auth.models import AbstractUser, BaseUserManager
 
-
-class User(AbstractUser):
-    email = models.EmailField(unique=True)
-    date_of_birth = models.DateField()
-    profile_photo = models.ImageField()
-
-class CustomUserManager(BaseUserManager):
-    def create_user(self, username, password, date_of_birth, profile_picture, **extra_fields):
-        if not email:
-            raise ValueError('users  must have an email address')
-        email = self.normalize_email(email)
-        user = self.model(
-            email = email,
-            date_of_birth = date_of_birth,
-            profile_picture = profile_picture,
-            **extra_fields
-        )
-        user.set_password(password)
-        user.save(using=self._db)
-        USERNAME_FIELD = 'email'
-
-        return user
-    def create_superuser(self, username, password, date_of_birth, profile_picture, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('is_active', True)
-
-        return self.create_user(username,password=password,**extra_fields)
-
-        
     
 
 class Author(models.Model):
@@ -78,7 +48,7 @@ class Librarian(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     ROLE_CHOICES = [
         ('Admin', 'Admin'),
         ('Librarian', 'Librarian'),
@@ -94,12 +64,12 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
     
-    @receiver(post_save, sender=User)
+    @receiver(post_save, sender=CustomUser)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             UserProfile.objects.create(user = instance)
 
-    @receiver(post_save, sender=User)
+    @receiver(post_save, sender=CustomUser)
     def save_user_profile(sender, instance, **kwargs):
         instance.userprofile.save()
     

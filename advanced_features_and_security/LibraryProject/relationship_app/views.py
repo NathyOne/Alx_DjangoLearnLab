@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import login
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import permission_required
 
@@ -27,7 +28,7 @@ def lists_books(request):
     }
     return render(request, "relationship_app/list_books.html", context=context)
 
-class LibraryDetailView(DetailView):
+class LibraryDetailView(View):
     # all_books_in_the_Library = Library.objects.get(name="main library").books.all()
     all_books_in_library = Book.objects.filter(library__name="Main Library")
     template_name =  "relationship_app/library_detail.html"
