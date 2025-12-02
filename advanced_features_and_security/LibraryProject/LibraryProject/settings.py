@@ -24,7 +24,24 @@ AUTH_USER_MODEL = 'bookshelf.CustomUser'
 SECRET_KEY = 'django-insecure-4#ir(43!^fc0&(707(@n^d*jbtxjp6p&3jca+!&#^$fn4_cp7a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+SECURE_BROWSER_XSS_FILTER = True
+
+# X_FRAME_OPTIONS - Prevent clickjacking attacks
+X_FRAME_OPTIONS = 'DENY'  # or 'SAMEORIGIN' if you need to embed in same origin
+
+# SECURE_CONTENT_TYPE_NOSNIFF - Prevent MIME type sniffing
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# SECURE_SSL_REDIRECT - Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True
+
+# CSRF_COOKIE_SECURE - CSRF cookies only sent over HTTPS
+CSRF_COOKIE_SECURE = True
+
+# SESSION_COOKIE_SECURE - Session cookies only sent over HTTPS
+SESSION_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = []
 
@@ -40,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookshelf', 
     'relationship_app',
+    'csp',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'csp.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'LibraryProject.urls'
