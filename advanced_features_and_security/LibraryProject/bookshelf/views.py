@@ -18,4 +18,4 @@ class ViewBooks(View):
 class AddBook(View):
     def get(self, request):
         form = ExampleForm()  # This ensures ExampleForm is used
-        return render(request, 'example_form.html', {'form': form})
+        return render(request, 'bookshelf/example_form.html', {'form': form})
