@@ -26,7 +26,7 @@ class Book(models.Model):
             ("can_create", "Can create book"),
             ("can_change_book", "Can change book"),
             ("can_delete", "Can delete book"),
-            ("can_view_book", "Can view book"),
+            ("can_view_books", "Can view books"),
             ("can_manage_inventory", "Can manage book inventory"),
         ]
 
