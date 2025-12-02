@@ -22,9 +22,9 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_active', True)
-
         return self.create_user(email=email, password=password, date_of_birth=date_of_birth, profile_photo=profile_photo, **extra_fields)
-
+ 
+ 
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
@@ -33,12 +33,10 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-
     def __str__(self):
         return self.email
-
+    
 class Book(models.Model):
-
 #     title: CharField with a maximum length of 200 characters.
 # author: CharField with a maximum length of 100 characters.
 # publication_year: IntegerField.

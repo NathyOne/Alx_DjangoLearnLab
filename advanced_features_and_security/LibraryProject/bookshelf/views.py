@@ -9,4 +9,3 @@ class ViewBooks(View):
     context = {
         "book_lists":book_lists
     }
-    

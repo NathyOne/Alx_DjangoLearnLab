@@ -19,7 +19,7 @@ from django.contrib.auth.decorators import permission_required
 
 
 # Create your views here.
-@permission_required('bookshelf.can_edit', raise_exception=True)
+@permission_required('bookshelf.view', raise_exception=True)
 def lists_books(request):
     book_list = Book.objects.all()
 
@@ -28,7 +28,9 @@ def lists_books(request):
     }
     return render(request, "relationship_app/list_books.html", context=context)
 
-class LibraryDetailView(View):
+
+@permission_required('bookshelf.can_edit', raise_exception=True)
+class LibraryDetailView():
     # all_books_in_the_Library = Library.objects.get(name="main library").books.all()
     all_books_in_library = Book.objects.filter(library__name="Main Library")
     template_name =  "relationship_app/library_detail.html"
