@@ -13,7 +13,7 @@ class ViewBooks(View):
         context = {
             "book_list": book_list
         }
-        return render(request, 'your_template.html', context)
+        return render(request, 'book_list.html', context)
     
 class AddBook(View):
     def get(self, request):
