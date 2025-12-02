@@ -23,9 +23,9 @@ class Book(models.Model):
         
         # Custom permissions for the Book model
         permissions = [
-            ("can_add_book", "Can add book"),
+            ("can_create", "Can create book"),
             ("can_change_book", "Can change book"),
-            ("can_delete_book", "Can delete book"),
+            ("can_delete", "Can delete book"),
             ("can_view_book", "Can view book"),
             ("can_manage_inventory", "Can manage book inventory"),
         ]
