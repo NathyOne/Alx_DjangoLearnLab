@@ -9,8 +9,8 @@ from django.contrib.auth.decorators import permission_required
 @method_decorator(permission_required('bookshelf.can_view_book', raise_exception=True), name='dispatch')
 class ViewBooks(View):
     def get(self, request):
-        books = Book.objects.all()
+        book_list = Book.objects.all()
         context = {
-            "books": books
+            "book_list": book_list
         }
         return render(request, 'your_template.html', context)
