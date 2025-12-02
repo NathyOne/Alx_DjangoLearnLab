@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-4#ir(43!^fc0&(707(@n^d*jbtxjp6p&3jca+!&#^$fn4_cp7a
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+# LibraryProject/settings.py or settings/production.py
 
+# Add this to your settings file
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
  
 SECURE_HSTS_SECONDS  = '31536000'
