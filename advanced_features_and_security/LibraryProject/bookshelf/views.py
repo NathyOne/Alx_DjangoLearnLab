@@ -1,12 +1,16 @@
 from django.shortcuts import render
 from django.views import View
 from .models import Book
-# Create your views here.
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import permission_required
 
-@permission_required('can_view', raise_exception=True)
+
+
+@method_decorator(permission_required('bookshelf.can_view_book', raise_exception=True), name='dispatch')
 class ViewBooks(View):
-    books = Book.objects.all()
-    context = {
-        "books":books
-    }
+    def get(self, request):
+        books = Book.objects.all()
+        context = {
+            "books": books
+        }
+        return render(request, 'your_template.html', context)
