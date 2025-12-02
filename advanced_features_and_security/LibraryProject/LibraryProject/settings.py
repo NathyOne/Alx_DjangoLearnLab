@@ -26,6 +26,12 @@ SECRET_KEY = 'django-insecure-4#ir(43!^fc0&(707(@n^d*jbtxjp6p&3jca+!&#^$fn4_cp7a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+"SECURE_BROWSER_XSS_FILTER",
+"X_FRAME_OPTIONS", 
+"SECURE_CONTENT_TYPE_NOSNIFF",
+"CSRF_COOKIE_SECURE", 
+"SESSION_COOKIE_SECURE"
+
 SECURE_BROWSER_XSS_FILTER = True
 
 # X_FRAME_OPTIONS - Prevent clickjacking attacks
@@ -33,9 +39,6 @@ X_FRAME_OPTIONS = 'DENY'  # or 'SAMEORIGIN' if you need to embed in same origin
 
 # SECURE_CONTENT_TYPE_NOSNIFF - Prevent MIME type sniffing
 SECURE_CONTENT_TYPE_NOSNIFF = True
-
-# SECURE_SSL_REDIRECT - Redirect all HTTP requests to HTTPS
-SECURE_SSL_REDIRECT = True
 
 # CSRF_COOKIE_SECURE - CSRF cookies only sent over HTTPS
 CSRF_COOKIE_SECURE = True
